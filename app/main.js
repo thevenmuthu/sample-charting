@@ -9,7 +9,10 @@ require.config({
         'ui-bootstrap': 'libs/ui-bootstrap/ui-bootstrap.min',
         'firebase-app': 'libs/firebase/firebase-app.min',
         'firebase-database': 'libs/firebase/firebase-database.min',
-        'home': 'modules/home/home'
+        'highcharts': 'libs/highcharts/highcharts',
+        'highstocks': 'libs/highstocks/highstocks',
+        'home': 'modules/home/home',
+        'column-chart': 'modules/column-chart/column-chart'
     },
     shim: {
     	'angular-amd': {
@@ -28,6 +31,9 @@ require.config({
             deps: ['angular']
         },
         'home': {
+            deps: ['ui-bootstrap', 'firebase-app', 'firebase-database']
+        },
+        'column-chart': {
             deps: ['ui-bootstrap']
         }
     },

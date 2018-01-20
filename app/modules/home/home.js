@@ -2,17 +2,18 @@ define([
 	'ui-bootstrap',
     'firebase-app',
     'firebase-database',
+    'column-chart'
 ], function () {
-	var homeModule = angular.module('home', ['ui.bootstrap']);
+	var homeModule = angular.module('home', ['ui.bootstrap', 'column-chart']);
 	
     HomeCtrl.$inject = ['HomeService'];
     function HomeCtrl(HomeService) {
         var self = this;
         self.title = 'Home Page';
 
-        HomeService.getData(function(data) {
-            console.log(data);
-        });
+        // HomeService.getData(function(data) {
+        //     console.log(data);
+        // });
     }
 
     HomeService.$inject = [];
