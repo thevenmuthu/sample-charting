@@ -4,6 +4,8 @@ define([
   'angular-ui-router',
   'home'
 	], function (angularAMD) {
+    'use strict';
+    
     var app = angular.module("app", ['ui.bootstrap', 'ui.router', 'home']);
     app.config(function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/home');
