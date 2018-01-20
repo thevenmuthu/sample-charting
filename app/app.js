@@ -2,10 +2,9 @@ define([
 	'angular-amd',
   'ui-bootstrap',
   'angular-ui-router',
-  'home',
-  'about'
+  'home'
 	], function (angularAMD) {
-    var app = angular.module("app", ['ui.bootstrap', 'ui.router', 'home', 'about']);
+    var app = angular.module("app", ['ui.bootstrap', 'ui.router', 'home']);
     app.config(function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/home');
       $stateProvider
@@ -14,13 +13,7 @@ define([
             templateUrl: 'modules/home/home.html',
             controller: 'HomeCtrl',
             controllerAs: 'home'
-        })
-        .state('about', {
-            url: '/about',
-            templateUrl: 'modules/about/about.html',
-            controller: 'AboutCtrl',
-            controllerAs: 'about'
-        })
+        });
     });
     return angularAMD.bootstrap(app);
 });

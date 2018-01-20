@@ -7,8 +7,7 @@ require.config({
         'angular-aria': 'libs/angular-aria/angular-aria.min',
         'angular-ui-router': 'libs/angular-ui-router/angular-ui-router.min',
         'ui-bootstrap': 'libs/ui-bootstrap/ui-bootstrap.min',
-        'home': 'modules/home/home' ,
-        'about': 'modules/about/about'
+        'home': 'modules/home/home'
     },
     shim: {
     	'angular-amd': {
@@ -27,9 +26,6 @@ require.config({
             deps: ['angular']
         },
         'home': {
-            deps: ['ui-bootstrap']
-        },
-        'about': {
             deps: ['ui-bootstrap']
         }
     },
