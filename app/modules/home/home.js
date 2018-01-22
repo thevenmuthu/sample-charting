@@ -3,6 +3,8 @@ define([
     'firebase-app',
     'firebase-database',
 ], function () {
+    'use-strict'
+
 	var homeModule = angular.module('home', ['ui.bootstrap']);
 	
     HomeCtrl.$inject = ['HomeService'];
