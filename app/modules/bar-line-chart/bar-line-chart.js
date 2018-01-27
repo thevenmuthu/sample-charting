@@ -28,7 +28,6 @@ define([
 
                     _.forEach(data, function(item) {
                         var key = Object.keys(item)[0];
-                        categories.push(key);
 
                         _.forEach(item[key], function(value, key) {
                             if(!_.includes(industries, key))
@@ -47,7 +46,7 @@ define([
 
                         _.forEach(industries, function(industry) {
                             if(!byIndustry.hasOwnProperty(industry))
-                                byIndustry[industry] = [];
+                                byIndustry[industry] = [key];
 
                             var array = byIndustry[industry];
                             value = item[key][industry] == undefined ? 0 : item[key][industry];
@@ -56,35 +55,46 @@ define([
                         });
                     });
 
-                    var numberOfPostings = [];
-                    _.forEach(byMonth, function(value, key) {
-                        numberOfPostings.push(value);
-                    });
+                    // var numberOfPostings = [];
+                    // _.forEach(byMonth, function(value, key) {
+                    //     numberOfPostings.push(value);
+                    // });
 
-                    var series = [{name: 'Total postings', data: numberOfPostings, type: 'column'}];
+                     var series = [];
+                     // [{name: 'Total postings', data: numberOfPostings, type: 'column'}];
 
                     _.forEach(byIndustry, function(value, key){
-                        series.push({ name: key, data: value, type: 'line' });
+                        series.push({ name: key, data: value, zoomType: 'spline' });
                     });
-                    
+
+                    console.log(series);
+
                     Highcharts.stockChart(element[0], {
                         rangeSelector: {
                             selected: 1
                         },
                         chart: {
-                            height: '100%'
+                            height: '100%',
+                            zoomType: 'x'
                         },
                         title: {
                             text: 'Total number of postings against postings by industries every month'
                         },
+                        xAxis: {
+                            type: 'datetime'
+                        },                        
                         yAxis: {
                             min: 0,
                             title: {
                                 text: 'Number of postings'
                             }
                         },
+                        legend: {
+                            enabled: false
+                        },
                         tooltip: {
-                            split: true
+                            split: true,
+                            shared: false
                         },
                         plotOptions: {
                             column: {
