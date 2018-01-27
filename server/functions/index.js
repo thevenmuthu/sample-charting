@@ -9,6 +9,7 @@ admin.initializeApp(functions.config().firebase);
 * Purpose			: To summarize data to visualize number of postings, grouped by positions, by every industry
 */
 exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((request, response) => {
+	response.header('Access-Control-Allow-Origin', '*');
 	admin.database().ref('/data').once('value', (snapshot) => {
 		var data = _(snapshot.val())
 					.groupBy('industry')
@@ -29,6 +30,7 @@ exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((requ
 * Purpose			: To summarize data to visualize total number of postings against number of postings by companies every month
 */
 exports.numberOfPostingsByYearPerCompany = functions.https.onRequest((request, response) => {
+	response.header('Access-Control-Allow-Origin', '*');
 	admin.database().ref('/data').once('value', (snapshot) => {
 		var data = _(snapshot.val())
 					.groupBy((item) => {
