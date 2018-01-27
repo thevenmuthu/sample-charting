@@ -13,7 +13,7 @@ exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((requ
 		try {
 			var data = _(snapshot.val())
 						.groupBy('industry')
-						.map(function(value, key) {
+						.map((value, key) => {
 							var obj = {};
 							obj[key] = _.countBy(value, 'position')
 							return obj
@@ -34,11 +34,11 @@ exports.numberOfPostingsByYearPerCompany = functions.https.onRequest((request, r
 	admin.database().ref('/data').once('value', (snapshot) => {
 		try {
 			var data = _(snapshot.val())
-						.groupBy(function(item) {
+						.groupBy((item) => {
 							var dateObj = new Date(item['date_posted']);
 							return (dateObj.getMonth() + '-' + dateObj.getFullYear());
 						})
-						.map(function(value, key) {
+						.map((value, key) => {
 							var obj = {};
 							obj[key] = _.countBy(value, 'companies')
 							return obj
