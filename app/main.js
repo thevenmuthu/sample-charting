@@ -8,10 +8,11 @@ require.config({
         'angular-ui-router': 'libs/angular-ui-router/angular-ui-router.min',
         'ui-bootstrap': 'libs/ui-bootstrap/ui-bootstrap.min',
         'highcharts': 'libs/highcharts/highcharts',
-        'highstocks': 'libs/highstocks/highstocks',
+        'highstocks': 'libs/highstocks/highstock',
         'lodash': 'libs/lodash/lodash',
         'home': 'modules/home/home',
-        'column-chart': 'modules/column-chart/column-chart'
+        'column-chart': 'modules/column-chart/column-chart',
+        'column-line-chart': 'modules/column-line-chart/column-line-chart'
     },
     shim: {
     	'angular-amd': {
@@ -33,6 +34,9 @@ require.config({
             deps: ['ui-bootstrap']
         },
         'column-chart': {
+            deps: ['ui-bootstrap', 'lodash']
+        },
+        'column-line-chart': {
             deps: ['ui-bootstrap', 'lodash']
         }
     },
