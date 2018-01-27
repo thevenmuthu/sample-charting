@@ -53,3 +53,17 @@ exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, 
  		response.send(error.code).send(error.message);
  	});
 });
+
+/*
+* Date modified		: 1/27/2018
+* Purpose			: To return posting data
+*/
+exports.postingData = functions.https.onRequest((request, response) => {
+	response.header('Access-Control-Allow-Origin', '*');
+	admin.database().ref('/data').once('value', (snapshot) => {
+		var data = snapshot.val();	
+    	response.status(200).send(data);
+ 	}).catch((error) => {
+ 		response.send(error.code).send(error.message);
+ 	});
+});
