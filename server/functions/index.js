@@ -1,7 +1,6 @@
 const functions = require('firebase-functions');
 const _ = require('lodash');
 const admin = require('firebase-admin');
-const moment = require('moment');
 	
 admin.initializeApp(functions.config().firebase);
 
