@@ -1,6 +1,6 @@
 define([
 	'ui-bootstrap',
-    'highcharts',
+    'highstocks',
     'lodash'
 ], function () {
     'use-strict';
@@ -22,31 +22,78 @@ define([
                 })
                 .then(function(response) {
                     var data = response.data;
-                    console.log(data)
 
                     var categories = [];
-                    var object = {};
+                    var industries = [];
 
                     _.forEach(data, function(item) {
                         var key = Object.keys(item)[0];
                         categories.push(key);
 
-                        object = _.mergeWith(object, item[key], function customizer(objValue, srcValue) {
-                            if (objValue) {
-                                return (objValue + srcValue);
-                            } else {
-                                return (0 + srcValue);
-                            }
+                        _.forEach(item[key], function(value, key) {
+                            if(!_.includes(industries, key))
+                                industries.push(key);
                         });
                     });
 
-                    console.log(object);
+                    var byIndustry = {};
+                    var byMonth = {};
 
-                    // var series = [];
+                    _.forEach(data, function(item) {
+                        var key = Object.keys(item)[0];
 
-                    // _.forEach(object, function(value, key){
-                    //     series.push({ name: key, data: value });
-                    // });
+                        if(!byMonth.hasOwnProperty(key))
+                            byMonth[key] = 0;
+
+                        _.forEach(industries, function(industry) {
+                            if(!byIndustry.hasOwnProperty(industry))
+                                byIndustry[industry] = [];
+
+                            var array = byIndustry[industry];
+                            value = item[key][industry] == undefined ? 0 : item[key][industry];
+                            byMonth[key] += value;
+                            array.push(value);
+                        });
+                    });
+
+                    var numberOfPostings = [];
+                    _.forEach(byMonth, function(value, key) {
+                        numberOfPostings.push(value);
+                    });
+
+                    var series = [{name: 'Total postings', data: numberOfPostings, type: 'column'}];
+
+                    _.forEach(byIndustry, function(value, key){
+                        series.push({ name: key, data: value, type: 'line' });
+                    });
+                    
+                    Highcharts.stockChart(element[0], {
+                        rangeSelector: {
+                            selected: 1
+                        },
+                        chart: {
+                            height: '100%'
+                        },
+                        title: {
+                            text: 'Total number of postings against postings by industries every month'
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Number of postings'
+                            }
+                        },
+                        tooltip: {
+                            split: true
+                        },
+                        plotOptions: {
+                            column: {
+                                pointPadding: 0.2,
+                                borderWidth: 0
+                            }
+                        },
+                        series: series
+                    });
                 });
             }
         };
