@@ -35,7 +35,7 @@ exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, 
 		var data = _(snapshot.val())
 					.groupBy((item) => {
 						var dateObj = new Date(item['date_posted']);
-						return ("1" + dateObj.getMonth() + '-' + dateObj.getFullYear());
+						return ('1-' + dateObj.getMonth() + '-' + dateObj.getFullYear());
 					})
 					.map((value, key) => {
 						var obj = {};
