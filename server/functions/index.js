@@ -35,7 +35,7 @@ exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, 
 		var data = _(snapshot.val())
 					.groupBy((item) => {
 						var dateObj = new Date(item['date_posted']);
-						return ('1-' + dateObj.getMonth() + '-' + dateObj.getFullYear());
+						return (new Date(dateObj.getFullYear() + '.' + (dateObj.getMonth() + 1) +'.1').getTime() / 1000);
 					})
 					.map((value, key) => {
 						var obj = {};
@@ -43,6 +43,11 @@ exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, 
 						return obj
 					})
 					.value();
+
+		data.sort(function (a, b) {
+		    return  parseInt(Object.keys(a)[0]) - parseInt(Object.keys(b)[0]);
+		});
+
     	response.status(200).send(data);
  	}).catch((error) => {
  		response.send(error.code).send(error.message);
