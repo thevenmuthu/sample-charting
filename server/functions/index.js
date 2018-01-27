@@ -27,19 +27,19 @@ exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((requ
 
 /*
 * Date modified		: 1/27/2018
-* Purpose			: To summarize data to visualize total number of postings against number of postings by companies every month
+* Purpose			: To summarize data to visualize total number of postings against number of postings by industries every month
 */
-exports.numberOfPostingsByYearPerCompany = functions.https.onRequest((request, response) => {
+exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, response) => {
 	response.header('Access-Control-Allow-Origin', '*');
 	admin.database().ref('/data').once('value', (snapshot) => {
 		var data = _(snapshot.val())
 					.groupBy((item) => {
 						var dateObj = new Date(item['date_posted']);
-						return (dateObj.getMonth() + '-' + dateObj.getFullYear());
+						return ("1" + dateObj.getMonth() + '-' + dateObj.getFullYear());
 					})
 					.map((value, key) => {
 						var obj = {};
-						obj[key] = _.countBy(value, 'companies')
+						obj[key] = _.countBy(value, 'industry')
 						return obj
 					})
 					.value();
