@@ -1,16 +1,11 @@
 define([
 	'ui-bootstrap',
-    'column-chart'
+    'column-chart',
+    'bar-line-chart'
 ], function () {
-<<<<<<< HEAD
     'use-strict'
-
-	var homeModule = angular.module('home', ['ui.bootstrap']);
-=======
-    'use-strict';
-
-	var homeModule = angular.module('home', ['ui.bootstrap', 'column-chart']);
->>>>>>> feature/enable-first-chart
+    
+	var homeModule = angular.module('home', ['ui.bootstrap', 'column-chart', 'bar-line-chart']);
 	
     HomeCtrl.$inject = [];
     function HomeCtrl() {

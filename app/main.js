@@ -11,7 +11,8 @@ require.config({
         'highstocks': 'libs/highstocks/highstocks',
         'lodash': 'libs/lodash/lodash',
         'home': 'modules/home/home',
-        'column-chart': 'modules/column-chart/column-chart'
+        'column-chart': 'modules/column-chart/column-chart',
+        'bar-line-chart': 'modules/bar-line-chart/bar-line-chart'
     },
     shim: {
     	'angular-amd': {
@@ -33,6 +34,9 @@ require.config({
             deps: ['ui-bootstrap']
         },
         'column-chart': {
+            deps: ['ui-bootstrap', 'lodash']
+        },
+        'bar-line-chart': {
             deps: ['ui-bootstrap', 'lodash']
         }
     },
