@@ -44,7 +44,7 @@ exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, 
 					})
 					.value();
 
-		data.sort(function (a, b) {
+		data.sort((a, b) => {
 		    return  parseInt(Object.keys(a)[0]) - parseInt(Object.keys(b)[0]);
 		});
 
