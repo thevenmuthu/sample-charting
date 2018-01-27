@@ -1,11 +1,12 @@
 define([
 	'ui-bootstrap',
     'column-chart',
-    'column-line-chart'
+    'column-line-chart',
+    'table'
 ], function () {
     'use-strict'
     
-	var homeModule = angular.module('home', ['ui.bootstrap', 'column-chart', 'column-line-chart']);
+	var homeModule = angular.module('home', ['ui.bootstrap', 'column-chart', 'column-line-chart', 'table']);
 	
     HomeCtrl.$inject = [];
     function HomeCtrl() {
