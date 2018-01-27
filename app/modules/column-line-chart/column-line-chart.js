@@ -5,16 +5,16 @@ define([
 ], function () {
     'use-strict';
 
-	var barLineChartModule = angular.module('bar-line-chart', ['ui.bootstrap']);
+	var columnLineChartModule = angular.module('column-line-chart', ['ui.bootstrap']);
 
-    BarLineChartDirective.$inject = ['$http'];
-    function BarLineChartDirective($http) {
+    ColumnLineChartDirective.$inject = ['$http'];
+    function ColumnLineChartDirective($http) {
         return {
             restrict: 'E',
             scope: {
                 model: '='
             },
-            templateUrl: 'modules/bar-line-chart/bar-line-chart.html',
+            templateUrl: 'modules/column-line-chart/column-line-chart.html',
             link: function(scope, element, attrs) {
                 $http({
                     method: 'GET',
@@ -44,34 +44,30 @@ define([
                         if(!byMonth.hasOwnProperty(key))
                             byMonth[key] = 0;
 
-                        _.forEach(industries, function(industry) {
+                         _.forEach(industries, function(industry) {
                             if(!byIndustry.hasOwnProperty(industry))
-                                byIndustry[industry] = [key];
+                                byIndustry[industry] = [];
 
-                            var array = byIndustry[industry];
-                            value = item[key][industry] == undefined ? 0 : item[key][industry];
+                            var value = item[key][industry] == undefined ? 0 : item[key][industry];
                             byMonth[key] += value;
-                            array.push(value);
+                            byIndustry[industry].push([parseInt(key), value]);
                         });
                     });
 
-                    // var numberOfPostings = [];
-                    // _.forEach(byMonth, function(value, key) {
-                    //     numberOfPostings.push(value);
-                    // });
-
-                     var series = [];
-                     // [{name: 'Total postings', data: numberOfPostings, type: 'column'}];
-
-                    _.forEach(byIndustry, function(value, key){
-                        series.push({ name: key, data: value, zoomType: 'spline' });
+                    var numberOfPostings = [];
+                    _.forEach(byMonth, function(value, key) {
+                        numberOfPostings.push([parseInt(key), value]);
                     });
 
-                    console.log(series);
+                     var series = [{name: 'Total postings', data: numberOfPostings, type: 'column'}];
+
+                    _.forEach(byIndustry, function(value, key){
+                        series.push({ name: key, data: value, type: 'spline' });
+                    });
 
                     Highcharts.stockChart(element[0], {
                         rangeSelector: {
-                            selected: 1
+                            enabled: false
                         },
                         chart: {
                             height: '100%',
@@ -92,9 +88,20 @@ define([
                         legend: {
                             enabled: false
                         },
+                        navigator: {
+                            enabled: false
+                        },
+                        scrollbar: {
+                            enabled: false
+                        },
                         tooltip: {
-                            split: true,
-                            shared: false
+                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true,
+                            split: false
                         },
                         plotOptions: {
                             column: {
@@ -109,5 +116,5 @@ define([
         };
     }
 
-    barLineChartModule.directive('barLineChartDirective', BarLineChartDirective);
+    columnLineChartModule.directive('columnLineChartDirective', ColumnLineChartDirective);
 });

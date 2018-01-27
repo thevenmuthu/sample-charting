@@ -12,7 +12,7 @@ require.config({
         'lodash': 'libs/lodash/lodash',
         'home': 'modules/home/home',
         'column-chart': 'modules/column-chart/column-chart',
-        'bar-line-chart': 'modules/bar-line-chart/bar-line-chart'
+        'column-line-chart': 'modules/column-line-chart/column-line-chart'
     },
     shim: {
     	'angular-amd': {
@@ -36,7 +36,7 @@ require.config({
         'column-chart': {
             deps: ['ui-bootstrap', 'lodash']
         },
-        'bar-line-chart': {
+        'column-line-chart': {
             deps: ['ui-bootstrap', 'lodash']
         }
     },
