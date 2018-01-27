@@ -9,6 +9,7 @@ require.config({
         'ui-bootstrap': 'libs/ui-bootstrap/ui-bootstrap.min',
         'highcharts': 'libs/highcharts/highcharts',
         'highstocks': 'libs/highstocks/highstocks',
+        'lodash': 'libs/lodash/lodash',
         'home': 'modules/home/home',
         'column-chart': 'modules/column-chart/column-chart'
     },
@@ -32,7 +33,7 @@ require.config({
             deps: ['ui-bootstrap']
         },
         'column-chart': {
-            deps: ['ui-bootstrap']
+            deps: ['ui-bootstrap', 'lodash']
         }
     },
     deps: ['app']

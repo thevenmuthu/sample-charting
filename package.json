@@ -13,6 +13,7 @@
     "gulp-live-server": "0.0.30",
     "gulp-watch": "^4.3.9",
     "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
     "method-override": "^2.3.10",
     "morgan": "^1.9.0",
     "opener": "^1.4.1",

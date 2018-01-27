@@ -26,6 +26,6 @@
   gulp.task('lint', function() {
     return gulp.src(['app/modules/**/*.js'])
         .pipe(gulpJshint('.jshintrc'))
-        .pipe(gulpJshint.reporter('jshint-stylish', {beep: true}))
+        .pipe(gulpJshint.reporter('jshint-stylish', {beep: false}))
   });
 })();

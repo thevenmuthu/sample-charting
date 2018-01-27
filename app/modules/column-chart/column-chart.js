@@ -1,6 +1,7 @@
 define([
 	'ui-bootstrap',
-    'highcharts'
+    'highcharts',
+    'lodash'
 ], function () {
     'use-strict';
 
@@ -22,6 +23,14 @@ define([
                 .then(function(response) {
                     var data = response.data;
                     console.log(data)
+
+                    var categories = [];
+
+                    _.forEach(data, function(item) {
+                        categories.push(Object.keys(item));
+                    });
+
+                    console.log(categories);
                     
                     Highcharts.chart(element[0], {
                         chart: {
