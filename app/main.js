@@ -7,9 +7,11 @@ require.config({
         'angular-aria': 'libs/angular-aria/angular-aria.min',
         'angular-ui-router': 'libs/angular-ui-router/angular-ui-router.min',
         'ui-bootstrap': 'libs/ui-bootstrap/ui-bootstrap.min',
-        'firebase-app': 'libs/firebase/firebase-app.min',
-        'firebase-database': 'libs/firebase/firebase-database.min',
-        'home': 'modules/home/home'
+        'highcharts': 'libs/highcharts/highcharts',
+        'highstocks': 'libs/highstocks/highstocks',
+        'lodash': 'libs/lodash/lodash',
+        'home': 'modules/home/home',
+        'column-chart': 'modules/column-chart/column-chart'
     },
     shim: {
     	'angular-amd': {
@@ -29,6 +31,9 @@ require.config({
         },
         'home': {
             deps: ['ui-bootstrap']
+        },
+        'column-chart': {
+            deps: ['ui-bootstrap', 'lodash']
         }
     },
     deps: ['app']
