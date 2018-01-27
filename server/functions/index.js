@@ -10,19 +10,17 @@ admin.initializeApp(functions.config().firebase);
 */
 exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((request, response) => {
 	admin.database().ref('/data').once('value', (snapshot) => {
-		try {
-			var data = _(snapshot.val())
-						.groupBy('industry')
-						.map((value, key) => {
-							var obj = {};
-							obj[key] = _.countBy(value, 'position')
-							return obj
-						})
-						.value();
-        	response.status(200).send(data);
-		} catch (e) {
-
-		}
+		var data = _(snapshot.val())
+					.groupBy('industry')
+					.map((value, key) => {
+						var obj = {};
+						obj[key] = _.countBy(value, 'position')
+						return obj
+					})
+					.value();
+    	response.status(200).send(data);
+ 	}).catch((error) => {
+ 		response.send(error.code).send(error.message);
  	});
 });
 
@@ -32,21 +30,19 @@ exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((requ
 */
 exports.numberOfPostingsByYearPerCompany = functions.https.onRequest((request, response) => {
 	admin.database().ref('/data').once('value', (snapshot) => {
-		try {
-			var data = _(snapshot.val())
-						.groupBy((item) => {
-							var dateObj = new Date(item['date_posted']);
-							return (dateObj.getMonth() + '-' + dateObj.getFullYear());
-						})
-						.map((value, key) => {
-							var obj = {};
-							obj[key] = _.countBy(value, 'companies')
-							return obj
-						})
-						.value();
-        	response.status(200).send(data);
-		} catch (e) {
-			
-		}
+		var data = _(snapshot.val())
+					.groupBy((item) => {
+						var dateObj = new Date(item['date_posted']);
+						return (dateObj.getMonth() + '-' + dateObj.getFullYear());
+					})
+					.map((value, key) => {
+						var obj = {};
+						obj[key] = _.countBy(value, 'companies')
+						return obj
+					})
+					.value();
+    	response.status(200).send(data);
+ 	}).catch((error) => {
+ 		response.send(error.code).send(error.message);
  	});
 });
