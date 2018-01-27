@@ -7,8 +7,6 @@ require.config({
         'angular-aria': 'libs/angular-aria/angular-aria.min',
         'angular-ui-router': 'libs/angular-ui-router/angular-ui-router.min',
         'ui-bootstrap': 'libs/ui-bootstrap/ui-bootstrap.min',
-        'firebase-app': 'libs/firebase/firebase-app.min',
-        'firebase-database': 'libs/firebase/firebase-database.min',
         'highcharts': 'libs/highcharts/highcharts',
         'highstocks': 'libs/highstocks/highstocks',
         'home': 'modules/home/home',
@@ -31,7 +29,7 @@ require.config({
             deps: ['angular']
         },
         'home': {
-            deps: ['ui-bootstrap', 'firebase-app', 'firebase-database']
+            deps: ['ui-bootstrap']
         },
         'column-chart': {
             deps: ['ui-bootstrap']
