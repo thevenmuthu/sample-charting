@@ -18,7 +18,7 @@ define([
             link: function(scope, element, attrs) {
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting.cloudfunctions.net/numberOfPostingsByYearPerCompany'
+                    url: 'https://us-central1-sample-charting.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
                 })
                 .then(function(response) {
                     var data = response.data;
