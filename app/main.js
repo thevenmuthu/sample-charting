@@ -8,8 +8,7 @@ require.config({
         'angular-ui-router': 'libs/angular-ui-router/angular-ui-router.min',
         'ui-bootstrap': 'libs/ui-bootstrap/ui-bootstrap.min',
         'ui-grid-info': 'libs/ui-grid.info/ui-grid.min',
-        'highcharts': 'libs/highcharts/highcharts',
-        'highstocks': 'libs/highstocks/highstock',
+        'highcharts': 'libs/highstocks/highstock.src',
         'lodash': 'libs/lodash/lodash',
         'chartTable': 'modules/chart-table/chart-table',
         'chart1': 'modules/chart1/chart1',
@@ -50,7 +49,7 @@ require.config({
             deps: ['ui-bootstrap', 'highcharts', 'lodash']
         },
         'column-line-chart': {
-            deps: ['ui-bootstrap', 'highstocks', 'lodash']
+            deps: ['ui-bootstrap', 'highcharts', 'lodash']
         },
         'table': {
             deps: ['ui-bootstrap', 'ui-grid-info']

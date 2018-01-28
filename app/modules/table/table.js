@@ -19,11 +19,13 @@ define([
 
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting.cloudfunctions.net/postingData'
+                    url: 'https://us-central1-sample-charting-2.cloudfunctions.net/postingData'
                 })
                 .then(function(response) {
                     scope.gridOptions = {
-                        data: response.data
+                        data: response.data,
+                        enableSorting: true,
+                        enableCellEditOnFocus: true
                     };
                 }, function(error) {
                     console.error(error);

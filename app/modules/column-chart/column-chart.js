@@ -18,7 +18,7 @@ define([
             link: function(scope, element, attrs) {
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting.cloudfunctions.net/numberOfPostingsByPositionsPerIndustry'
+                    url: 'https://us-central1-sample-charting-2.cloudfunctions.net/numberOfPostingsByPositionsPerIndustry'
                 })
                 .then(function(response) {
                     var data = response.data;
@@ -48,7 +48,7 @@ define([
                     Highcharts.chart(element[0], {
                         chart: {
                             type: 'column',
-                            height: '100%'
+                            className: 'custom-container custom-chart'
                         },
                         title: {
                             text: 'Number of postings (by positions) over industries'

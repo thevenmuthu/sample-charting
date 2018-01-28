@@ -2,14 +2,15 @@ define([
 	'ui-bootstrap',
     'column-line-chart',
 ], function () {
-    'use-strict'
+    'use-strict';
     
 	var chart2Module = angular.module('chart2', ['ui.bootstrap', 'column-line-chart']);
 	
     Chart2Ctrl.$inject = [];
     function Chart2Ctrl() {
         var self = this;
-        self.title = 'Chart 2 Page';
+        self.title = 'Total number of positions posted against number of positions posted by every industry over certain timeframe';
+        self.description = 'This chart summarizes number of positions posted over certain timeframe. It includes detailed information on the number of positions by every industry against the total number of positions.';
     }
 
     chart2Module.controller('Chart2Ctrl', Chart2Ctrl);

@@ -1,6 +1,6 @@
 define([
 	'ui-bootstrap',
-    'highstocks',
+    'highcharts',
     'lodash'
 ], function () {
     'use-strict';
@@ -18,7 +18,7 @@ define([
             link: function(scope, element, attrs) {
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
+                    url: 'https://us-central1-sample-charting-2.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
                 })
                 .then(function(response) {
                     var data = response.data;
@@ -71,7 +71,8 @@ define([
                         },
                         chart: {
                             height: '100%',
-                            zoomType: 'x'
+                            zoomType: 'x',
+                            className: 'custom-container custom-chart'
                         },
                         title: {
                             text: 'Total number of postings against postings by industries every month'
