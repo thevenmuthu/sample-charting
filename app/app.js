@@ -7,9 +7,10 @@ define([
   'chart2'
 	], function (angularAMD) {
     'use strict';
-    
+    // Configuration of Angular application
     var app = angular.module("app", ['ui.bootstrap', 'ui.router', 'chart-table', 'chart1', 'chart2']);
     app.config(function($stateProvider, $urlRouterProvider) {
+      // Navigation configuration for every module in the application
       $urlRouterProvider.otherwise('/chart-table');
       $stateProvider
         .state('chart-table', {

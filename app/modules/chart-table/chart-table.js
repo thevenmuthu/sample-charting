@@ -4,6 +4,7 @@ define([
 ], function () {
     'use-strict';
     
+    // Configuration of chart-table module (Appears as Chart table in navigation bar options)
 	var chartTableModule = angular.module('chart-table', ['ui.bootstrap', 'table']);
 	
     ChartTableCtrl.$inject = [];
@@ -11,7 +12,6 @@ define([
         var self = this;
         self.title = 'Chart data';
         self.description = 'This page is intended to display the records used to populate the charts in another two tabs.';
-        self.note = 'P.s. You are allowed to make changes to the records. Once complete updating records, click Save button to commit the changes to database.';
     }
 
     chartTableModule.controller('ChartTableCtrl', ChartTableCtrl);

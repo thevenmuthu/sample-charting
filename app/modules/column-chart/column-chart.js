@@ -6,6 +6,8 @@ define([
 ], function () {
     'use-strict';
 
+    // Configuration of column chart directive
+    // Purpose: Summarizes data into multi-column chart
 	var columnChartModule = angular.module('column-chart', ['ui.bootstrap', 'progress-circle']);
 
     ColumnChartDirective.$inject = ['$http'];
@@ -17,6 +19,7 @@ define([
             },
             templateUrl: 'modules/column-chart/column-chart.html',
             link: function(scope, element, attrs) {
+                //HTTP call to retrieve data from Firebase database
                 $http({
                     method: 'GET',
                     url: 'https://us-central1-sample-charting-2.cloudfunctions.net/numberOfPostingsByPositionsPerIndustry'
@@ -27,6 +30,7 @@ define([
                     var categories = [];
                     var object = {};
 
+                    // Moulds the data into the required structure
                     _.forEach(data, function(item) {
                         var key = Object.keys(item)[0];
                         categories.push(key);
@@ -46,6 +50,7 @@ define([
                         series.push({ name: key, data: value });
                     });
                     
+                    // Constructs chart
                     Highcharts.chart(element[0], {
                         chart: {
                             type: 'column',

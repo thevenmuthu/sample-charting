@@ -6,6 +6,8 @@ define([
 ], function () {
     'use-strict';
 
+    // Configuration of column-line-chart directive
+    // Purpose: Summarizes data into column + line combined chart
 	var columnLineChartModule = angular.module('column-line-chart', ['ui.bootstrap', 'progress-circle']);
 
     ColumnLineChartDirective.$inject = ['$http'];
@@ -17,6 +19,7 @@ define([
             },
             templateUrl: 'modules/column-line-chart/column-line-chart.html',
             link: function(scope, element, attrs) {
+                // HTTP call to retrieve data from database, which is Firebase
                 $http({
                     method: 'GET',
                     url: 'https://us-central1-sample-charting-2.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
@@ -27,6 +30,7 @@ define([
                     var categories = [];
                     var industries = [];
 
+                    // Moulds data into required structure
                     _.forEach(data, function(item) {
                         var key = Object.keys(item)[0];
 
@@ -66,6 +70,7 @@ define([
                         series.push({ name: key, data: value, type: 'spline' });
                     });
 
+                    // Constructs chart
                     Highcharts.stockChart(element[0], {
                         rangeSelector: {
                             enabled: false

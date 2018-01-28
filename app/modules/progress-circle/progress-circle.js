@@ -3,6 +3,8 @@ define([
 ], function () {
     'use-strict';
 
+    // Configuration of progress-circle directive
+    // Purpose: This is an UI-related module that shows loading spinner.
 	var progressCircleModule = angular.module('progress-circle', ['ui.bootstrap']);
 
     ProgressCircleDirective.$inject = ['$http'];

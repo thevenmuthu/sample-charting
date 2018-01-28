@@ -1,3 +1,5 @@
+// This file is mainly to load dependencies in lazy-load (on-demand) manner
+
 require.config({
     baseUrl: '',    
     paths: {

@@ -1,13 +1,11 @@
+// Server side functions to crunch and summarize data up-to certain level (To the structure that is acceptable by multiple recepients)
 const functions = require('firebase-functions');
 const _ = require('lodash');
 const admin = require('firebase-admin');
 	
 admin.initializeApp(functions.config().firebase);
 
-/*
-* Date modified		: 1/27/2018
-* Purpose			: To summarize data to visualize number of postings, grouped by positions, by every industry
-*/
+// Purpose: To summarize data to visualize number of postings, grouped by positions, by every industry
 exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((request, response) => {
 	response.header('Access-Control-Allow-Origin', '*');
 	admin.database().ref('/data').once('value', (snapshot) => {
@@ -25,10 +23,8 @@ exports.numberOfPostingsByPositionsPerIndustry = functions.https.onRequest((requ
  	});
 });
 
-/*
-* Date modified		: 1/27/2018
-* Purpose			: To summarize data to visualize total number of postings against number of postings by industries every month
-*/
+
+// Purpose: To summarize data to visualize total number of postings against number of postings by industries every month
 exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, response) => {
 	response.header('Access-Control-Allow-Origin', '*');
 	admin.database().ref('/data').once('value', (snapshot) => {
@@ -54,10 +50,7 @@ exports.numberOfPostingsByMonthPerIndustry= functions.https.onRequest((request, 
  	});
 });
 
-/*
-* Date modified		: 1/27/2018
-* Purpose			: To return posting data
-*/
+// Purpose: To return posting data
 exports.postingData = functions.https.onRequest((request, response) => {
 	response.header('Access-Control-Allow-Origin', '*');
 	admin.database().ref('/data').once('value', (snapshot) => {

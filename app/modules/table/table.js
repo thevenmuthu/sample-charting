@@ -4,7 +4,8 @@ define([
     'progress-circle'
 ], function () {
     'use-strict';
-
+    // Configuration of table directive
+    // Purpose: Loads and shows data from database in table form.
 	var tableModule = angular.module('table', ['ui.bootstrap', 'ui.grid', 'progress-circle']);
 
     TableDirective.$inject = ['$http'];
@@ -17,6 +18,7 @@ define([
                 scope.gridOptions = {};
                 scope.showTable = false;
 
+                // HTTP call to retrieve data from database, in this case, the chosen database is Firebase
                 $http({
                     method: 'GET',
                     url: 'https://us-central1-sample-charting-2.cloudfunctions.net/postingData'

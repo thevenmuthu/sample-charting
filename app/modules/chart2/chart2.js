@@ -4,6 +4,7 @@ define([
 ], function () {
     'use-strict';
     
+    // Configuration of chart2 module (Appears as Chart 2 in navigation bar options)
 	var chart2Module = angular.module('chart2', ['ui.bootstrap', 'column-line-chart']);
 	
     Chart2Ctrl.$inject = [];

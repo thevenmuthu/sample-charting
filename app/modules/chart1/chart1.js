@@ -4,6 +4,7 @@ define([
 ], function () {
     'use-strict';
     
+    // Configuration of chart1 module (Appears as Chart 1 in navigation bar options)
 	var chart1Module = angular.module('chart1', ['ui.bootstrap', 'column-chart']);
 	
     Chart1Ctrl.$inject = [];
