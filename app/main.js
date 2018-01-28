@@ -10,12 +10,13 @@ require.config({
         'ui-grid-info': 'libs/ui-grid.info/ui-grid.min',
         'highcharts': 'libs/highstocks/highstock.src',
         'lodash': 'libs/lodash/lodash',
-        'chartTable': 'modules/chart-table/chart-table',
+        'chart-table': 'modules/chart-table/chart-table',
         'chart1': 'modules/chart1/chart1',
         'chart2': 'modules/chart2/chart2',
         'column-chart': 'modules/column-chart/column-chart',
         'column-line-chart': 'modules/column-line-chart/column-line-chart',
-        'table': 'modules/table/table'
+        'table': 'modules/table/table',
+        'progress-circle': 'modules/progress-circle/progress-circle'
     },
     shim: {
     	'angular-amd': {
@@ -36,6 +37,9 @@ require.config({
         'angular-ui-router': {
             deps: ['angular']
         },
+        'progress-circle': {
+            deps: ['ui-bootstrap']
+        },
         'chart-table': {
             deps: ['ui-bootstrap', 'table']
         },
@@ -46,10 +50,10 @@ require.config({
             deps: ['ui-bootstrap', 'column-line-chart']
         },
         'column-chart': {
-            deps: ['ui-bootstrap', 'highcharts', 'lodash']
+            deps: ['ui-bootstrap', 'highcharts', 'lodash', 'progress-circle']
         },
         'column-line-chart': {
-            deps: ['ui-bootstrap', 'highcharts', 'lodash']
+            deps: ['ui-bootstrap', 'highcharts', 'lodash', 'progress-circle']
         },
         'table': {
             deps: ['ui-bootstrap', 'ui-grid-info']

@@ -4,7 +4,7 @@ define([
 ], function () {
     'use-strict';
     
-	var chartTableModule = angular.module('chartTable', ['ui.bootstrap', 'table']);
+	var chartTableModule = angular.module('chart-table', ['ui.bootstrap', 'table']);
 	
     ChartTableCtrl.$inject = [];
     function ChartTableCtrl() {

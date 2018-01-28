@@ -1,11 +1,12 @@
 define([
 	'ui-bootstrap',
     'highcharts',
-    'lodash'
+    'lodash',
+    'progress-circle'
 ], function () {
     'use-strict';
 
-	var columnLineChartModule = angular.module('column-line-chart', ['ui.bootstrap']);
+	var columnLineChartModule = angular.module('column-line-chart', ['ui.bootstrap', 'progress-circle']);
 
     ColumnLineChartDirective.$inject = ['$http'];
     function ColumnLineChartDirective($http) {

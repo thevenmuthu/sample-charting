@@ -2,17 +2,17 @@ define([
 	'angular-amd',
   'ui-bootstrap',
   'angular-ui-router',
-  'chartTable',
+  'chart-table',
   'chart1',
   'chart2'
 	], function (angularAMD) {
     'use strict';
     
-    var app = angular.module("app", ['ui.bootstrap', 'ui.router', 'chartTable', 'chart1', 'chart2']);
+    var app = angular.module("app", ['ui.bootstrap', 'ui.router', 'chart-table', 'chart1', 'chart2']);
     app.config(function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/home');
       $stateProvider
-        .state('chartTable', {
+        .state('chart-table', {
             url: '/chartTable',
             templateUrl: 'modules/chart-table/chart-table.html',
             controller: 'ChartTableCtrl',

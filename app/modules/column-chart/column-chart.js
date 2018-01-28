@@ -1,11 +1,12 @@
 define([
 	'ui-bootstrap',
     'highcharts',
-    'lodash'
+    'lodash',
+    'progress-circle'
 ], function () {
     'use-strict';
 
-	var columnChartModule = angular.module('column-chart', ['ui.bootstrap']);
+	var columnChartModule = angular.module('column-chart', ['ui.bootstrap', 'progress-circle']);
 
     ColumnChartDirective.$inject = ['$http'];
     function ColumnChartDirective($http) {
@@ -48,7 +49,9 @@ define([
                     Highcharts.chart(element[0], {
                         chart: {
                             type: 'column',
-                            className: 'custom-container custom-chart'
+                            className: 'custom-container custom-chart',
+                            height: '100%',
+                            zoomType: 'x'
                         },
                         title: {
                             text: 'Number of postings (by positions) over industries'
