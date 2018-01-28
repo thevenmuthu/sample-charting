@@ -1,55 +1,6 @@
 <div class="container-fluid custom-container">
-	<!-- <progress-circle-directive ng-show="!showTable"></progress-circle-directive> -->
-	<div ng-if="true">
-		<div class="well">
-			<div class="row custom-row">
-				<div class="col-md-3">
-					Job title:
-				</div>
-				<div class="col-md-3">
-					<input type="text" class="form-control" ng-model="jobTitle">
-				</div>
-				<div class="col-md-3">
-					Date posted:
-				</div>
-				<div class="col-md-3">
-					<p class="input-group">
-						<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="date" is-open="opened" ng-required="true" close-text="Close" ng-disabled="true" />
-						<span class="input-group-btn">
-						<button type="button" class="btn btn-default" ng-click="openTimepicker()"><i class="glyphicon glyphicon-calendar"></i></button>
-						</span>
-			        </p>
-				</div>
-			</div>
-			<div class="row custom-row">
-				<div class="col-md-3">
-					Position:
-				</div>
-				<div class="col-md-3">
-					<input type="text" class="form-control" ng-model="position" ng-required="true">
-				</div>
-				<div class="col-md-3">
-					Industry:
-				</div>
-				<div class="col-md-3">
-					<input type="text" class="form-control" ng-model="industry" ng-required="true">
-				</div>
-			</div>
-			<div class="row custom-row">
-				<div class="col-md-3">
-					Company:
-				</div>
-				<div class="col-md-3">
-					<input type="text" class="form-control" ng-model="company" ng-required="true">
-				</div>
-			</div>
-			<div class="row custom-row">
-				<div class="col-md-12">
-					<button class="btn btn-default custom-button pull-right" ng-click="addRecord()">Save changes</button>
-					<button class="btn btn-default custom-button pull-right" ng-click="resetFields()">Reset</button>
-				</div>
-			</div>
-		</div>
+	<progress-circle-directive ng-show="!showTable"></progress-circle-directive>
+	<div ng-if="showTable">
 		<div ui-grid="gridOptions" class="custom-table"></div>
 	</div>
 </div>
