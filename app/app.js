@@ -10,10 +10,10 @@ define([
     
     var app = angular.module("app", ['ui.bootstrap', 'ui.router', 'chart-table', 'chart1', 'chart2']);
     app.config(function($stateProvider, $urlRouterProvider) {
-      $urlRouterProvider.otherwise('/home');
+      $urlRouterProvider.otherwise('/chart-table');
       $stateProvider
         .state('chart-table', {
-            url: '/chartTable',
+            url: '/chart-table',
             templateUrl: 'modules/chart-table/chart-table.html',
             controller: 'ChartTableCtrl',
             controllerAs: 'chartTable'
