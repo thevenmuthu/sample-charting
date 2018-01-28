@@ -1,11 +1,14 @@
 define([
 	'ui-bootstrap',
-    'highstocks',
-    'lodash'
+    'highcharts',
+    'lodash',
+    'progress-circle'
 ], function () {
     'use-strict';
 
-	var columnLineChartModule = angular.module('column-line-chart', ['ui.bootstrap']);
+    // Configuration of column-line-chart directive
+    // Purpose: Summarizes data into column + line combined chart
+	var columnLineChartModule = angular.module('column-line-chart', ['ui.bootstrap', 'progress-circle']);
 
     ColumnLineChartDirective.$inject = ['$http'];
     function ColumnLineChartDirective($http) {
@@ -16,9 +19,10 @@ define([
             },
             templateUrl: 'modules/column-line-chart/column-line-chart.html',
             link: function(scope, element, attrs) {
+                // HTTP call to retrieve data from database, which is Firebase
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
+                    url: 'https://us-central1-sample-charting-2.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
                 })
                 .then(function(response) {
                     var data = response.data;
@@ -26,6 +30,7 @@ define([
                     var categories = [];
                     var industries = [];
 
+                    // Moulds data into required structure
                     _.forEach(data, function(item) {
                         var key = Object.keys(item)[0];
 
@@ -65,13 +70,15 @@ define([
                         series.push({ name: key, data: value, type: 'spline' });
                     });
 
+                    // Constructs chart
                     Highcharts.stockChart(element[0], {
                         rangeSelector: {
                             enabled: false
                         },
                         chart: {
                             height: '100%',
-                            zoomType: 'x'
+                            zoomType: 'x',
+                            className: 'custom-container custom-chart'
                         },
                         title: {
                             text: 'Total number of postings against postings by industries every month'

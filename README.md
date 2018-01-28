@@ -1,14 +1,14 @@
-# Angular Bootstrap Seed + RequireJS + Grunt
-An AngularJS seed based on UI Bootstrap, RequireJS and Grunt
+# Sample charting application
+An AngularJS + Firebase + Highstock based sample charting application
 
 ## Installation
 1. Clone the project
 2. Cd into the project folder
 3. Npm install to install dependent node modules
-4. Type 'grunt' in Node CMD to run the project
+4. Type 'gulp run' in Node CMD to run the project
 
 ## Usage
-This is an AngularJS seed based on UI Bootstrap. This project would serve as a immediate solution for Angular web development. 
+This project would serve as a preliminary guidance on integrating Firebase server-side processing (cloud functions) with AngularJS application to bring up Big Data analytics related capabilities. 
 
 ## Contributing
 1. Fork it!
@@ -17,16 +17,15 @@ This is an AngularJS seed based on UI Bootstrap. This project would serve as a i
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
 
-## History
-
 ## Notes
-Meantime, the testing scripts would not be working. Test scripts will be added as soon as possible. 
-
+Meantime, neither unit testing nor E2E testing performed on the application.
 
 ## Credits
 1. AngularJS Seed - Pete Bacon Darwin (https://github.com/petebacondarwin)
 2. UI Bootstrap - Wesley Cho (https://github.com/wesleycho)
 3. Bootstrap - Chris Rebert (https://github.com/cvrebert)
+4. Firebase - Firebase (https://firebase.google.com/)
+5. Highstock - Highsoft AS <support@highcharts.com> (http://www.highcharts.com/about)
 
 ## License
 MIT

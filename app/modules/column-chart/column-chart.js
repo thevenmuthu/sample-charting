@@ -1,11 +1,14 @@
 define([
 	'ui-bootstrap',
     'highcharts',
-    'lodash'
+    'lodash',
+    'progress-circle'
 ], function () {
     'use-strict';
 
-	var columnChartModule = angular.module('column-chart', ['ui.bootstrap']);
+    // Configuration of column chart directive
+    // Purpose: Summarizes data into multi-column chart
+	var columnChartModule = angular.module('column-chart', ['ui.bootstrap', 'progress-circle']);
 
     ColumnChartDirective.$inject = ['$http'];
     function ColumnChartDirective($http) {
@@ -16,9 +19,10 @@ define([
             },
             templateUrl: 'modules/column-chart/column-chart.html',
             link: function(scope, element, attrs) {
+                //HTTP call to retrieve data from Firebase database
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting.cloudfunctions.net/numberOfPostingsByPositionsPerIndustry'
+                    url: 'https://us-central1-sample-charting-2.cloudfunctions.net/numberOfPostingsByPositionsPerIndustry'
                 })
                 .then(function(response) {
                     var data = response.data;
@@ -26,6 +30,7 @@ define([
                     var categories = [];
                     var object = {};
 
+                    // Moulds the data into the required structure
                     _.forEach(data, function(item) {
                         var key = Object.keys(item)[0];
                         categories.push(key);
@@ -45,10 +50,13 @@ define([
                         series.push({ name: key, data: value });
                     });
                     
+                    // Constructs chart
                     Highcharts.chart(element[0], {
                         chart: {
                             type: 'column',
-                            height: '100%'
+                            className: 'custom-container custom-chart',
+                            height: '100%',
+                            zoomType: 'x'
                         },
                         title: {
                             text: 'Number of postings (by positions) over industries'

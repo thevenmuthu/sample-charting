@@ -1,3 +1,5 @@
+// This is module is for development purposes (E2E integration)
+
 (function() {
   var gulp = require('gulp');
   var gulpWatch = require('gulp-watch');
