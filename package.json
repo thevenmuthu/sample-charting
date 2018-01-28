@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "An AngularJS + Firebase + Highstock based sample charting application",
   "repository": "https://github.com/thevenmuthu/sample-charting.git",
-  "author": "Thevendran Marimuthu <https://github.com/thevenmuthu>"
+  "author": "Thevendran Marimuthu <https://github.com/thevenmuthu>",
   "license": "MIT",
   "devDependencies": {
     "express": "^4.14.0",

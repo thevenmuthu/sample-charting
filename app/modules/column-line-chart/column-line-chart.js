@@ -22,7 +22,7 @@ define([
                 // HTTP call to retrieve data from database, which is Firebase
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting-2.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
+                    url: 'https://us-central1-sample-charting-2766a.cloudfunctions.net/numberOfPostingsByMonthPerIndustry'
                 })
                 .then(function(response) {
                     var data = response.data;

@@ -21,7 +21,7 @@ define([
                 // HTTP call to retrieve data from database, in this case, the chosen database is Firebase
                 $http({
                     method: 'GET',
-                    url: 'https://us-central1-sample-charting-2.cloudfunctions.net/postingData'
+                    url: 'https://us-central1-sample-charting-2766a.cloudfunctions.net/postingData'
                 })
                 .then(function(response) {
                     scope.showTable = true;
