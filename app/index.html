@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="app.css">
-  <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css">
-  <script data-main="main.js" src="libs/require/require.js"></script>
-</head>
-<body>
-    <div ng-include = "'modules/navbar/navbar.html'"></div>
-    <div ui-view></div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sample charting</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Loading of stylesheet (Stylesheet are not loaded in lazy-load manner since they are lightweighted compared to javascript files) -->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="libs/ui-grid.info/ui-grid.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Loading of RequireJs modules (This modules handles loading of dependecy files in lazy-load manner) -->
+    <script data-main="main.js" src="libs/require/require.js"></script>
+  </head>
+  <body>
+    <!-- Loading of navigation bar of the application -->
+    <div ng-include="'modules/navbar/navbar.html'"></div>
+
+    <!-- Placeholder to load modules of the application -->
+    <div ui-view class="container-fluid"></div>
+  </body>
 </html>
