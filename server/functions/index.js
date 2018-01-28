@@ -67,3 +67,33 @@ exports.postingData = functions.https.onRequest((request, response) => {
  		response.send(error.code).send(error.message);
  	});
 });
+
+/*
+* Date modified		: 1/27/2018
+* Purpose			: To return posting data
+*/
+exports.postingData = functions.https.onRequest((request, response) => {
+	response.header('Access-Control-Allow-Origin', '*');
+	admin.database().ref('/data').once('value', (snapshot) => {
+		var data = snapshot.val();	
+    	response.status(200).send(data);
+ 	}).catch((error) => {
+ 		response.send(error.code).send(error.message);
+ 	});
+});
+
+/*
+* Date modified		: 1/28/2018
+* Purpose			: To save new record
+*/
+exports.saveRecord = functions.https.onRequest((request, response) => {
+	response.header('Access-Control-Allow-Origin', '*');
+	var requestData = request.data;
+
+	return admin.database().ref('/data').set(requestData).once('value', (snapshot) => {
+		var data = snapshot.val();	
+    	response.status(200).send(data);
+ 	}).catch((error) => {
+ 		response.send(error.code).send(error.message);
+ 	});
+});
